@@ -59,7 +59,7 @@ class UserProfilePage extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.centerRight,
                     child: Column(
-                      children: [
+                      children: const [
                         Text(
                           '37',
                           style: TextStyle(
@@ -81,7 +81,7 @@ class UserProfilePage extends StatelessWidget {
                 Expanded(
                   child: Container(
                     child: Column(
-                      children: [
+                      children: const [
                         Text(
                           '8',
                           style: TextStyle(
@@ -104,7 +104,7 @@ class UserProfilePage extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.centerLeft,
                     child: Column(
-                      children: [
+                      children: const [
                         Text(
                           '56',
                           style: TextStyle(
@@ -144,13 +144,13 @@ class UserProfilePage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   child: Container(
                     padding: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey.shade300),
+                        borderRadius: BorderRadius.circular(5)),
                     child: Icon(
                       Icons.camera_alt,
                       color: Colors.grey[800],
                     ),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey.shade300),
-                        borderRadius: BorderRadius.circular(5)),
                   ),
                 ),
                 Container(

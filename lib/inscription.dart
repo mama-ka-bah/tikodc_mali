@@ -1,6 +1,9 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tikodc_mali/etape2Inscription.dart';
+
+import 'connexion.dart';
 
 
 class Etape1Inscription extends StatelessWidget {
@@ -9,6 +12,7 @@ class Etape1Inscription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'TikODC',
       theme: ThemeData(
         primaryColor: Colors.white,
@@ -132,8 +136,8 @@ void _openPopup(context) {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const <Widget>[
-                          Expanded(
+                        children:  <Widget>[
+                          const Expanded(
                             flex: 1,
                             child: FaIcon(
                                 FontAwesomeIcons.user,
@@ -141,14 +145,29 @@ void _openPopup(context) {
                             ),
                           ),
                           Expanded(
+
                             flex: 2,
-                            child: Text(
-                              'Utiliser le téléphone ou l\'e-mail',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black87,
+
+                            child: InkWell(
+
+                              child: const Text(
+                                'Utiliser le téléphone ou l\'e-mail',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black87,
+                                ),
                               ),
-                            ),
+
+                                onTap: (){
+                                  //Navigator.of(context).pop();
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => Etape2Inscription()),
+                                  );
+                                }
+                            )
+
+
                           ),
                         ],
                       ),
@@ -296,7 +315,7 @@ void _openPopup(context) {
                 ),
                 Container(
                   color: Colors.white,
-                  child: Text(
+                  child: const Text(
                     'En continuant, tu acceptes les Condition d\'utilisation de TikTok et confirmes les avoir lu la Politique de confidentialité de TikTok.',
                     style: TextStyle(
                       fontSize: 16,
@@ -314,7 +333,7 @@ void _openPopup(context) {
                       onPressed: () => {},
 
                       child: Container(
-                        color: Colors.grey,
+                        color: Colors.black12,
                         width: double.infinity,
                         child: Row(
 
@@ -323,12 +342,23 @@ void _openPopup(context) {
                               child: Container(
                                 //color: Colors.orange,
                                 height: 40,
+                                  width: 100,
 
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
+                                    children:  [
                                   Text("Vous avez déjà un compte ?", style: TextStyle(fontSize: 15)),
-                                  Text(" Connexion",  style: TextStyle(color: Colors.red, fontSize: 16, fontWeight: FontWeight.bold)),
+                                      FloatingActionButton.extended(
+                                        backgroundColor: Colors.transparent,
+                                          elevation: 0,
+                                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+
+                                      onPressed: () {
+                                        _openPopup1(context);
+                                      }, label:  Text(" Connexion",  style: TextStyle(color: Colors.red, fontSize: 16, fontWeight: FontWeight.bold)),
+
+                                  )
                                 ])
                               ),
                             ),
@@ -336,6 +366,324 @@ void _openPopup(context) {
                         ),
                       )
 
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
+
+
+
+
+
+
+void _openPopup1(context) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.white,
+    builder: (BuildContext bc) {
+      return SizedBox(
+        height: MediaQuery
+            .of(context)
+            .size
+            .height * .90,
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () =>
+                          Navigator.pop(
+                            context,
+                          ),
+                      child: const Icon(
+                        Icons.close,
+                      ),
+                    ),
+                    const Icon(Icons.question_mark),
+                  ],
+                ),
+                const SizedBox(
+                  height: 50.0,
+                ),
+                const Text(
+                  'Connexion à TikODC',
+                  style: TextStyle(
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                const Text(
+                  'Créez un profil, suivez d\'autres comptes, créez vos propres vidéos, et plus encore.',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.black54,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                ButtonTheme(
+                  minWidth: 250.0,
+                  child: ElevatedButton(
+                    onPressed: () => {},
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0.0, backgroundColor: Colors.white,
+                      shape: const RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.grey, width: 1.5),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Expanded(
+                            flex: 1,
+                            child: FaIcon(
+                              FontAwesomeIcons.user,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Expanded(
+
+                              flex: 2,
+
+                              child: InkWell(
+
+                                  child: const Text(
+                                    'Utiliser le téléphone ou l\'e-mail',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    //Navigator.of(context).pop();
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) =>
+                                          Etape2Connexion()),
+                                    );
+                                  }
+                              )
+
+
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 15.0,
+                ),
+
+                ButtonTheme(
+                  minWidth: 250.0,
+                  child: ElevatedButton(
+                    onPressed: () => {},
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0.0, backgroundColor: Colors.white,
+                      shape: const RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.grey, width: 1.5),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const <Widget>[
+                          Expanded(
+                            flex: 1,
+                            child: FaIcon(
+                              FontAwesomeIcons.google,
+                              color: Colors.red,
+                            ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Text(
+                              'Continue avec Google',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 15.0,
+                ),
+
+
+                ButtonTheme(
+                  minWidth: 250.0,
+                  child: ElevatedButton(
+                    onPressed: () => {},
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0.0, backgroundColor: Colors.white,
+                      shape: const RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.grey, width: 1.5),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const <Widget>[
+                          Expanded(
+                            flex: 1,
+                            child: FaIcon(
+                              FontAwesomeIcons.facebook,
+                              color: Colors.blue,
+                            ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Text(
+                              'Continue avec  Facebook',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+
+                const SizedBox(
+                  height: 15.0,
+                ),
+
+
+                ButtonTheme(
+                  minWidth: 250.0,
+                  child: ElevatedButton(
+                    onPressed: () => {},
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0.0, backgroundColor: Colors.white,
+                      shape: const RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.grey, width: 1.5),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const <Widget>[
+                          Expanded(
+                            flex: 1,
+                            child: FaIcon(
+                              FontAwesomeIcons.twitter,
+                              color: Colors.lightBlue,
+                            ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Text(
+                              'Continue avec Twitter',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+
+                const SizedBox(
+                  height: 180.0,
+                ),
+
+
+                Container(
+                  color: Colors.white,
+                  child: const Text(
+                    'En continuant, tu acceptes les Condition d\'utilisation de TikTok et confirmes les avoir lu la Politique de confidentialité de TikTok.',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ),
+
+                Expanded(
+                  child: Align(
+                    //color : Colors.black,
+                    alignment: FractionalOffset.bottomCenter,
+                    child: MaterialButton(
+
+                        onPressed: () => {},
+
+                        child: Container(
+                          color: Colors.black12,
+                          width: double.infinity,
+                          child: Row(
+
+                            children: <Widget>[
+                              Expanded(
+                                child: Container(
+                                  //color: Colors.orange,
+                                    height: 40,
+                                    width: 100,
+
+                                    child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children:  [
+                                          Text("Vous n'avez pas de compte ?", style: TextStyle(fontSize: 15)),
+                                          FloatingActionButton.extended(
+                                            backgroundColor: Colors.transparent,
+                                            elevation: 0,
+                                            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+
+                                            onPressed: () {
+
+                                              _openPopup(context);
+                                            }, label:  Text(" inscription",  style: TextStyle(color: Colors.red, fontSize: 16, fontWeight: FontWeight.bold)),
+
+                                          )
+                                        ])
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
                     ),
                   ),
                 ),

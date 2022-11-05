@@ -1,5 +1,6 @@
 // ignore_for_file: no_logic_in_create_state, unnecessary_this
 import 'package:flutter/material.dart';
+import 'package:tikodc_mali/userProfilePage.dart';
 import 'package:video_player/video_player.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'dart:math' as math;
@@ -13,19 +14,19 @@ class HomePage extends StatelessWidget {
   //declation des 6 videos à afficher sur la page
   final List<Map> tiktokItems = [
     {
+      "video": "assets/videos/video_11.mp4",
+    },
+    {
+      "video": "assets/videos/video_1.mp4",
+    },
+    {
+      "video": "assets/videos/video_12.mp4",
+    },
+    {
       "video": "assets/videos/video_2.mp4",
     },
     {
       "video": "assets/videos/video_3.mp4",
-    },
-    {
-      "video": "assets/videos/video_4.mp4",
-    },
-    {
-      "video": "assets/videos/video_5.mp4",
-    },
-    {
-      "video": "assets/videos/video_6.mp4",
     },
   ];
 
@@ -221,13 +222,24 @@ class PostContent extends StatelessWidget {
                       child: Stack(
                         alignment: AlignmentDirectional.bottomCenter,
                         children: [
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 10),
+
+                          GestureDetector(
+                            //margin: const EdgeInsets.only(bottom: 10),
                             child: const CircleAvatar(
                               radius: 25,
                               backgroundImage:
                               AssetImage('assets/images/photo-5.png'),
+
                             ),
+
+                              onTap: (){
+                               // Navigator.of(context).pop();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => UserProfilePage()),
+                                );
+                              }
+
                           ),
 
                           Container(

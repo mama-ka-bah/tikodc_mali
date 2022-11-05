@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tikodc_mali/userProfilePage.dart';
 
-import 'accueil.dart';
-import 'inscription.dart';
 import 'menu.dart';
-
 
 void main() {
   runApp(const MyApp()); // execution du widget MyApp
@@ -17,15 +14,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     //MaterialApp est toute mon application
-    return  MaterialApp(
-      home: MyStatefulWidget(),
-      /*routes: {
-       "/": (context) =>  HomePage(),
+    return  const MaterialApp(
+        debugShowCheckedModeBanner: false,
+
+     home: MyStatefulWidget()
+
+      /*
+      routes: {
+       "/": (context) =>  MyStatefulWidget(),
         "/acueil":  (context) => MyStatefulWidget(),
         "/etape1": (context) =>  Etape1Inscription(),
         "/profile": (context) => UserProfilePage()
       },
-      initialRoute: "/acueil",*/
+      initialRoute: "/",
+       */
+
     );
   }
 }
